@@ -16,6 +16,20 @@ const getAllCleaningChores = async (_req, res) => {
     }
 };
 
+const createCleaningChore = async (req, res) => {
+    const { name } = req.body;
+    try {
+        await Cleaning.create({
+            name: name,
+            description: ''
+        });
+        res.status(200).json({ message: 'Cleaning chore added' });
+    } 
+    catch (err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
 // For dev phase
 const createCleaningChores = async (_req, res) => {
     try {
@@ -42,8 +56,15 @@ const router = Router();
 
 router.get('/', getAllCleaningChores);
 
+router.post('/', createCleaningChore);
+
 // Post (for dev phase)
 
 router.post('/seed', createCleaningChores);
+
+app.use((req, _res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
 
 export { router as cleaningChoresRouter };
