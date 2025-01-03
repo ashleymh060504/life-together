@@ -4,8 +4,8 @@ import { createRoot, ReactDOM } from 'react-dom/client'
 import './index.css'
 
 import App from './App.jsx'
-import Group from './pages/Together.jsx'
-import Profile from './pages/User.jsx'
+import Together from './pages/Together.jsx'
+import User from './pages/User.jsx'
 import Login from './pages/Login.jsx'
 
 const router = createBrowserRouter([
@@ -30,6 +30,6 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router}></RouterProvider>
   </StrictMode>,
 )
