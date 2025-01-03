@@ -1,13 +1,21 @@
 import { useState } from 'react'
-import InviteFriendsModal from './components/contact-us.jsx'
-import Homehtml from './html.jsx'
+import { Outlet } from 'react-router-dom';
+// import InviteFriendsModal from './components/contact-us.jsx'
+// import Homehtml from './html.jsx'
+import Navbar from './components/navbar.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
   return (
   <>
-    <InviteFriendsModal/>
-    <Homehtml/>
+    {/* <InviteFriendsModal/>
+    <Homehtml/> */}
+
+    
+      <Navbar />
+      <Outlet />
+
+
   </>
   )
 
