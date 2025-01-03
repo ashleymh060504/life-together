@@ -62,9 +62,4 @@ router.post('/', createCleaningChore);
 
 router.post('/seed', createCleaningChores);
 
-app.use((req, _res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
-
 export { router as cleaningChoresRouter };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
+import InviteFriendsModal from './components/contact-us';
 
 function Homehtml() {
   const [tasks, setTasks] = useState([]);
@@ -45,29 +46,32 @@ function Homehtml() {
   };
 
   return (
-    <div className="app">
-      <h1>To-Do List</h1>
-      <div className="input-container">
-        <input
-          type="text"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          placeholder="Add a new task"
-        />
-        <button onClick={isEditing ? updateTask : addTask}>
-          {isEditing ? 'Update' : 'Add'}
-        </button>
+    <>
+      {/* <InviteFriendsModal/> */}
+      <div className="app">
+        <h1>To-Do List</h1>
+        <div className="input-container">
+          <input
+            type="text"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            placeholder="Add a new task"
+          />
+          <button onClick={isEditing ? updateTask : addTask}>
+            {isEditing ? 'Update' : 'Add'}
+          </button>
+        </div>
+        <ul className="task-list">
+          {tasks.map((task, index) => (
+            <li key={index} className={task.completed ? 'completed' : ''}>
+              <span onClick={() => toggleCompletion(index)}>{task.text}</span>
+              <button onClick={() => editTask(index)}>Edit</button>
+              <button onClick={() => removeTask(index)}>Remove</button>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="task-list">
-        {tasks.map((task, index) => (
-          <li key={index} className={task.completed ? 'completed' : ''}>
-            <span onClick={() => toggleCompletion(index)}>{task.text}</span>
-            <button onClick={() => editTask(index)}>Edit</button>
-            <button onClick={() => removeTask(index)}>Remove</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    </>
   );
 }
 
