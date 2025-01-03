@@ -18,19 +18,24 @@ export function UserFactory(sequelize) {
                 primaryKey: true
             },
             first_name: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING(255),
+                allowNull: false
             },
             last_name: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING(255),
+                allowNull: false
             },
             username: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING(255),
+                allowNull: false
             },
             password: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING(255),
+                allowNull: false
             },
             email: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING(255),
+                allowNull: false
             }
         },
         {
