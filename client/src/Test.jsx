@@ -6,7 +6,7 @@ function Test() {
 
     const getChores = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/cleaning-chores/');
+            const response = await fetch('/api/cleaning-chores/');
             const data = await response.json();
             setChores(data);
             console.log(data);
