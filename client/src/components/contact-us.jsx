@@ -1,43 +1,74 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from 'react-bootstrap';
 
-const InviteFriendsModal = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const ContactUsModal = ({ show, handleClose }) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+    const handleChange = (e) => {
+        const { target } = e;
+        setEmail(target.value);
+        setName(target.value);
+        setMessage(target.value);
+    }
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handleInvite = () => {
-        alert(`Invite sent to: ${email}`);
-        setEmail(''); // Clear the input after sending the invite
-        closeModal();
-    };
-
+    const handleSubmission = () => {
+        alert(`Message has been sent to ${name}`);
+        setName('')
+        setEmail('')
+        setMessage('')
+    }
+   
     return (
-        <div>
-            <button onClick={openModal}>Invite Friends</button>
-
-            {isOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={closeModal}>&times;</span>
-                        <h2>Invite Your Friends!</h2>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Contact Us</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
                         <input 
-                            type="email" 
-                            value={email} 
-                            onChange={handleEmailChange} 
-                            placeholder="Friend's email" 
-                        />
-                        <button onClick={handleInvite}>Send Invite</button>
+                        type="text"
+                        className="form-control"
+                        onChange={handleChange}
+                        id="name"
+                        placeholder="Your Name" required />
                     </div>
-                </div>
-            )}
-        </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="email"
+                        className="form-control"
+                        onChange={handleChange}
+                        id="email"
+                        placeholder="Your Email" required />
+                    </div>
+                    <div className="form-group">
+                        <label 
+                        htmlFor="message">Message</label>
+                        <textarea 
+                        className="form-control"
+                        id="message"
+                        onChange={handleChange}
+                        rows="3"
+                        placeholder="Your Message" required></textarea>
+                    </div>
+                </form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" 
+                onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" 
+                onClick={handleSubmission}>
+                    Send Message
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
 };
 
-export default InviteFriendsModal;
+export default ContactUsModal;
