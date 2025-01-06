@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import { Cleaning } from '../../models/cleaning.js';
+import { Outdoors } from '../../models/outdoors.js';
 
 // GET
 
 const getAllChores = async (_req, res) => {
     try {
-        const cleaningChores = await Cleaning.findAll({
+        const chores = await Outdoors.findAll({
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
             }
         });
-        res.json(cleaningChores);
+        res.json(chores);
     } 
     catch (err) {
         res.status(500).json({ message: err.message });
@@ -20,13 +20,13 @@ const getAllChores = async (_req, res) => {
 const getChore = async (req, res) => {
     const { id } = req.params;
     try {
-        const cleaningChore = await Cleaning.findByPk(id, {
+        const chore = await Outdoors.findByPk(id, {
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
             }
         });
-        if (cleaningChore) {
-            res.json(cleaningChore);
+        if (chore) {
+            res.json(chore);
         }
         else {
             res.status(404).json({ message: 'Chore not found' });
@@ -35,18 +35,18 @@ const getChore = async (req, res) => {
     catch (err) {
         res.status(500).json({ message: err.message });
     }
-}
+};
 
 // POST
 
 const createChore = async (req, res) => {
     const { name, description } = req.body;
     try {
-        const newChore = await Cleaning.create({
+        const newChore = await Outdoors.create({
             name: name,
             description: description
         });
-        res.status(201).json({ message: 'Chore added' }, newChore);
+        res.status(201).json({ message: 'New chore added' }, newChore);
     } 
     catch (err) {
         res.status(500).json({ message: err.message });
@@ -54,37 +54,50 @@ const createChore = async (req, res) => {
 };
 
 // (for dev phase)
-const createChores = async (_req, res) => {
+
+const createChores = async (req, res) => {
     try {
-        Cleaning.bulkCreate([
+        await Outdoors.bulkCreate([
             {
-                name: 'Dishes',
-                description: 'Load the dishwasher and handwash the rest'
+                name: 'Mow the Lawn',
+                description: 'Mow the front and back lawn'
             },
             {
-                name: 'Laundry',
-                description: 'Wash, dry, and fold all the laundry'
-            }
+                name: 'Weed the Garden',
+                description: 'Pull all the weeds in the garden'
+            },
+            {
+                name: 'Trim the Bushes',
+                description: 'Trim all the bushes in the front and back yard'
+            },
+            {
+                name: 'Water the Plants',
+                description: 'Water all the plants in the garden'
+            },
+            {
+                name: 'Rake the Leaves',
+                description: 'Rake all the leaves in the front and back yard'
+            },
         ]);
-        res.status(201).json({ message: 'Cleaning chores data seeded' });
+        res.status(201).json({ message: 'Outdoor chores data seeded' });
     } 
     catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
-// UPDATE
+// PUT
 
 const updateChore = async (req, res) => {
     const { id } = req.params;
     const { name, description } = req.body;
 
     if (!name || description === undefined) {
-        return res.status(400).json({ message: 'Name and description are required'})
+        return res.status(400).json({ message: 'Name and description are required'});
     }
-    
+
     try {
-        const chore = await Cleaning.findByPk(id, {
+        const chore = await Outdoors.findByPk(id, {
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
             }
@@ -109,10 +122,10 @@ const updateChore = async (req, res) => {
 const deleteChore = async (req, res) => {
     const { id } = req.params;
     try {
-        const chore = await Cleaning.findByPk(id);
+        const chore = await Outdoors.findByPk(id);
         if (chore) {
             await chore.destroy();
-            res.json({ message: 'Chore deleted' });
+            res.json({ message: 'Chore successfully deleted' });
         }
         else {
             res.status(404).json({ message: 'Chore not found' });
@@ -136,10 +149,9 @@ router.get('/:id', getChore);
 router.post('/', createChore);
 
 // (for dev phase)
-
 router.post('/seed', createChores);
 
-// PUT 
+// PUT
 
 router.put('/:id', updateChore);
 
@@ -147,4 +159,7 @@ router.put('/:id', updateChore);
 
 router.delete('/:id', deleteChore);
 
-export { router as cleaningChoresRouter };
+export { router as outdoorChoresRouter};
+
+
+
