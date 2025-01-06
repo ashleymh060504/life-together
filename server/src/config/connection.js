@@ -1,8 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log(`Password is: ${process.env.DB_PASSWORD}`);
-
 import { Sequelize } from 'sequelize';
 
 const sequelize = process.env.DB_URL
