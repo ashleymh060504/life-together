@@ -53,8 +53,6 @@ const createChore = async (req, res) => {
     }
 };
 
-// (for dev phase)
-
 const createChores = async (req, res) => {
     try {
         await Outdoors.bulkCreate([
@@ -148,7 +146,6 @@ router.get('/:id', getChore);
 
 router.post('/', createChore);
 
-// (for dev phase)
 router.post('/seed', createChores);
 
 // PUT

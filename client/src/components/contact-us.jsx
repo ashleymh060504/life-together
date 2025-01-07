@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button } from 'react-bootstrap';
 
 const ContactUsModal = ({ show, handleClose }) => {
     const [name, setName] = useState('');
@@ -22,11 +21,6 @@ const ContactUsModal = ({ show, handleClose }) => {
     }
    
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>Contact Us</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
                 <form>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
@@ -56,18 +50,6 @@ const ContactUsModal = ({ show, handleClose }) => {
                         placeholder="Your Message" required></textarea>
                     </div>
                 </form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" 
-                onClick={handleClose}>
-                    Close
-                </Button>
-                <Button variant="primary" 
-                onClick={handleSubmission}>
-                    Send Message
-                </Button>
-            </Modal.Footer>
-        </Modal>
     );
 };
 

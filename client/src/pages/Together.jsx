@@ -1,11 +1,15 @@
 import CleaningChores from "../components/cleaning-chores"
+import Navbar from "../components/navbar.jsx"
 
 function Together() {
   return (
     <div>
-      <h1>Together</h1>
+      <Navbar/>
+      <div>
+        <h1>Together</h1>
 
-    <CleaningChores />
+      <CleaningChores />
+      </div>
     </div>
   )
 }
