@@ -53,7 +53,6 @@ const createChore = async (req, res) => {
     }
 };
 
-// (for dev phase)
 const createChores = async (_req, res) => {
     try {
         Cleaning.bulkCreate([
@@ -134,8 +133,6 @@ router.get('/:id', getChore);
 // POST
 
 router.post('/', createChore);
-
-// (for dev phase)
 
 router.post('/seed', createChores);
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './index.css';
-import InviteFriendsModal from './components/contact-us';
 
 function Homehtml() {
   const [tasks, setTasks] = useState([]);
@@ -47,7 +46,6 @@ function Homehtml() {
 
   return (
     <>
-      {/* <InviteFriendsModal/> */}
       <div className="app">
         <h1>To-Do List</h1>
         <div className="input-container">
