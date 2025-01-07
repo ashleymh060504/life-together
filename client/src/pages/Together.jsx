@@ -1,6 +1,7 @@
-import CleaningChores from "../components/cleaning-chores"
+import CleaningChores from "../components/cleaning-chores.jsx"
 import React, { useState } from 'react';
 import '../index.css';
+import Navbar from '../components/navbar.jsx';
 
 function Together() {
 
@@ -48,6 +49,7 @@ function Together() {
 
   return (
     <div>
+      <div><Navbar/></div>
       <div className="app">
         <h1>To-Do List</h1>
         <div className="input-container">
@@ -71,7 +73,7 @@ function Together() {
           ))}
         </ul>
       </div>
-      <CleaningChores />
+      {/* <CleaningChores /> */}
     </div>
   );
 };

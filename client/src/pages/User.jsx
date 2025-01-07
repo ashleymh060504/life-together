@@ -1,3 +1,5 @@
+import Navbar from "../components/navbar"
+
 function User() {
 
 
@@ -11,7 +13,7 @@ function User() {
   */
   return (
     <div>
-      <h1>User</h1>
+      <Navbar/>
     </div>
   )
 }   
