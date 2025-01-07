@@ -30,13 +30,13 @@ const InviteFriendsModal = () => {
                         type='name'
                         value={name}
                         onChange={handleInputChange}
-                        placeholder="Roomie's Name"
+                        placeholder="Friend's Name"
                         />
                         <input 
                             type="email" 
                             value={email} 
                             onChange={handleInputChange} 
-                            placeholder="Roomie's Email" 
+                            placeholder="Friend's Email" 
                         />
                         <input
                         type="text"
