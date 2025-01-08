@@ -16,6 +16,7 @@
   "author": "Mathew Lopez",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "concurrently": "^9.1.2",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
