@@ -1,5 +1,5 @@
 import Welcome from '../components/login-page/Welcome.jsx';
-import LoginRegister from '../components/login-page/loginRegister.jsx';
+// import LoginRegister from '../components/login-page/loginRegister.jsx';
 import ContactUs from '../components/login-page/ContactUs.jsx';
 
 function Login () {
@@ -7,7 +7,7 @@ function Login () {
     return (
         <>
             <Welcome/>
-            <LoginRegister/>
+            {/* <LoginRegister/> */}
             <ContactUs/>
             {/* <div>
                 <h1>Login</h1>
