@@ -1,4 +1,5 @@
 import Navbar from "../components/navbar"
+
 import React, { useState } from 'react';
 
 const User = () => {
