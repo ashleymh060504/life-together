@@ -1,7 +1,10 @@
-import CleaningChores from "../components/cleaning-chores.jsx"
 import React, { useState } from 'react';
 import '../index.css';
-import Navbar from '../components/navbar.jsx';
+import Navbar from '../components/Navbar.jsx';
+import Welcome from '../components/group-page/Welcome.jsx';
+import Chores from '../components/group-page/Chores.jsx';
+import InviteFriends from '../components/group-page/InviteFriends.jsx';
+import AddEditChore from '../components/group-page/AddEditChore.jsx';
 
 function Together() {
 
@@ -49,8 +52,11 @@ function Together() {
 
   return (
     <div>
-      <div><Navbar/></div>
-      <div className="app">
+      <Navbar one={'Log Out'} two={<InviteFriends/>} three={'Dark Mode'} btn={'My Profile'}/>
+      <Welcome/>
+      <Chores/>
+      <AddEditChore/>
+      {/* <div className="app">
         <h1>To-Do List</h1>
         <div className="input-container">
           <input
@@ -72,7 +78,7 @@ function Together() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       {/* <CleaningChores /> */}
     </div>
   );

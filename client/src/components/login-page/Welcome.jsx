@@ -1,6 +1,7 @@
 import "./welcome.css";
 
 function Welcome() {
+
   return (
     <div>
       {/* Header */}
