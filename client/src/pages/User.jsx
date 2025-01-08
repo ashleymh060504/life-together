@@ -2,6 +2,8 @@ import Navbar from "../components/navbar"
 
 function User() {
 
+ 
+
 
   /*
   fetch("/api/users/")
