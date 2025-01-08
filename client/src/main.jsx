@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import App from './App.jsx'
 import Together from './pages/Together.jsx'
-import User from './pages/User.jsx'
+import User from './pages/user.jsx'
 import Login from './pages/Login.jsx'
 
 const router = createBrowserRouter([
