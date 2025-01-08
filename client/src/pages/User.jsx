@@ -38,7 +38,9 @@ const User = () => {
 
   return (
     <div>
-      <h1>My Profile</h1>
+      <div><Navbar/></div>
+    <div>
+      <h1 class="text-center">My Profile</h1>
       <div>
         <input 
           type="text" 
@@ -84,6 +86,7 @@ const User = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
