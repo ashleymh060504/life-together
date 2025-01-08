@@ -1,12 +1,27 @@
-.dark-mode-btn {
-    cursor: pointer;
+body {
+  background-color: #483c32;
 }
 
-.heading {
-    color: #4FB477;
-    letter-spacing: 1.5px;
+.header {
+  background-color: #fffdf5;
+  border-radius: 20px;
 }
 
-.welcome-small {
-    width: 80vw;
+.landingpage-title {
+  color: #2c2c2c;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.landingpage-subtitle {
+  color: #2c2c2c;
+  text-align: center;
+  font-family: initial;
+  font-size: 25px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.btn-color {
+  background-color: #f7e9d7;
 }
