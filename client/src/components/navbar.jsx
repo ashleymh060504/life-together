@@ -3,30 +3,30 @@
 function Navbar(props) {
     return (
       <>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container-fluid">
+            <div className="collapse navbar-collapse" id="navbarText">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                <li class="nav-item">
-                  <button type="button" class="btn btn-primary">
-                    <a class="nav-link" href="/">
-                      <span class="navbar-text">{props.one}</span>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-primary">
+                    <a className="nav-link" href="/">
+                      <span className="navbar-text">{props.one}</span>
                     </a>
                   </button>
                 </li>
-                <li class="nav-item">
-                    <span class="navbar-text">{props.two}</span>
+                <li className="nav-item">
+                    <span className="navbar-text">{props.two}</span>
                 </li>
-                <li class="nav-item">
-                  <button type="button" class="btn btn-primary">
-                      <span class="navbar-text">{props.three}</span>
+                <li className="nav-item">
+                  <button type="button" className="btn btn-primary">
+                      <span className="navbar-text">{props.three}</span>
                   </button>
                 </li>
               </ul>
-                <button type="button" class="btn btn-primary">
-                  <a class="nav-link" href="/">
-                    <span class="navbar-text">{props.btn}</span>
+                <button type="button" className="btn btn-primary">
+                  <a className="nav-link" href="/">
+                    <span className="navbar-text">{props.btn}</span>
                   </a>
                 </button>
             </div>
