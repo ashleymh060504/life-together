@@ -7,7 +7,7 @@ function Welcome() {
       <div className="header container mt-3">
         <div className="titles pt-4">
           <h1 className="landingpage-title">LIFE TOGETHER</h1>
-          <h2 className="landingpage-subtitle">cohabitating made easy</h2>
+          <h2 className="landingpage-subtitle">Share The Load. Simplify Life.</h2>
         </div>
         <nav className="navbar d-flex justify-content-center">
           <ul className="list-unstyled list-inline">
