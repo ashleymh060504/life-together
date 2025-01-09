@@ -46,14 +46,14 @@ const createChore = async (req, res) => {
             name: name,
             description: description
         });
-        res.status(201).json({ message: 'New chore added' }, newChore);
+        res.status(201).json({ message: 'Chore successfully added', data: newChore });
     } 
     catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
 
-const createChores = async (req, res) => {
+const createChores = async (_req, res) => {
     try {
         await Outdoors.bulkCreate([
             {
@@ -104,7 +104,7 @@ const updateChore = async (req, res) => {
             chore.set('name', name);
             chore.set('description', description);
             await chore.save();
-            res.json(chore);
+            res.json({ message: 'Chore updated successfully', data: chore});
         }
         else {
             res.status(404).json({ message: 'Chore not found' });

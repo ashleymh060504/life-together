@@ -4,18 +4,16 @@ import { Router } from 'express';
 import { User } from '../../models/index.js';
 
 const getAllUsers = async (_req, res) => {
-    console.log("getAllUsers route is being hit");
     try {
         const users = await User.findAll({
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
             }
         });
-        console.log(users);
         res.json(users);
     }
     catch (err) {
-        res.status(500).json({message: error.message});
+        res.status(500).json({message: err.message});
     }
 };
 
@@ -31,7 +29,7 @@ const getOneUser = async (req, res) => {
         }
     } 
     catch (err) {
-        res.status(500).json({message: error.message});
+        res.status(500).json({message: err.message});
     }
 }
 
