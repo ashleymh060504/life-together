@@ -40,7 +40,7 @@ const User = () => {
     <div>
       <div><Navbar/></div>
     <div>
-      <h1 class="text-center">My Profile</h1>
+      <h1 className="text-center">My Profile</h1>
       <div>
         <input 
           type="text" 
@@ -113,7 +113,7 @@ export default User;
 //     </div>
 
 //     <div>
-//       <h1 class="text-center">My profile</h1>
+//       <h1 className="text-center">My profile</h1>
 //     </div>
 
     

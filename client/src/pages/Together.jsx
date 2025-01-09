@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar.jsx';
 import Welcome from '../components/group-page/Welcome.jsx';
 import Chores from '../components/group-page/Chores.jsx';
 import InviteFriends from '../components/group-page/InviteFriends.jsx';
-import AddEditChore from '../components/group-page/AddEditChore.jsx';
+import AddChore from '../components/group-page/AddChore.jsx';
 
 function Together() {
 
@@ -55,7 +55,7 @@ function Together() {
       <Navbar one={'Log Out'} two={<InviteFriends/>} three={'Dark Mode'} btn={'My Profile'}/>
       <Welcome/>
       <Chores/>
-      <AddEditChore/>
+      <AddChore/>
       {/* <div className="app">
         <h1>To-Do List</h1>
         <div className="input-container">
