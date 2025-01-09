@@ -1,0 +1,13 @@
+.bg-cards {
+  background-color: #f7e9d7;
+}
+
+.card-btn {
+  border: none;
+  border-radius: 20px;
+}
+
+.card-btn:hover {
+  background-color: #483C32;
+  color: #f7e9d7;
+}
