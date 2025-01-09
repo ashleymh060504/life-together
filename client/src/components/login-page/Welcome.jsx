@@ -1,14 +1,13 @@
 import "./welcome.css";
 
 function Welcome() {
-
   return (
     <div>
       {/* Header */}
       <div class="header container mt-3">
         <div class="titles  pt-4">
           <h1 class="landingpage-title">LIFE TOGETHER</h1>
-          <h2 class="landingpage-subtitle">cohabitating made easy</h2>
+          <h2 class="landingpage-subtitle">Share The Load. Simplify Life.</h2>
         </div>
         <nav class="navbar d-flex justify-content-center">
           <ul class="list-unstyled list-inline">
