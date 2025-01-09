@@ -10,12 +10,12 @@ function LoginRegister() {
                         <div class="card-body">
                             <h5 class="card-title">Login</h5>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" class="form-control" id="floatingInputLogin" placeholder="name@example.com"/>
+                                <label for="floatingInputLogin">Email address</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="floatingPasswordLogin" placeholder="Password"/>
+                                <label for="floatingPasswordLogin">Password</label>
                             </div>
                             <p>Forgot password?</p>
                             <button>Log in!</button>
@@ -27,12 +27,12 @@ function LoginRegister() {
                         <div class="card-body">
                             <h5 class="card-title">Register</h5>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" class="form-control" id="floatingInputRegister" placeholder="name@example.com"/>
+                                <label for="floatingInputRegister">Email address</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="floatingPasswordRegister" placeholder="Password"/>
+                                <label for="floatingPasswordRegister">Password</label>
                             </div>
                             <p>Ready to join us?</p>
                             <button>Register!</button>
