@@ -5,7 +5,7 @@ function Welcome() {
     <div>
       {/* Header */}
       <div className="header container mt-3">
-        <div className="titles  pt-4">
+        <div className="titles pt-4">
           <h1 className="landingpage-title">LIFE TOGETHER</h1>
           <h2 className="landingpage-subtitle">cohabitating made easy</h2>
         </div>
@@ -38,8 +38,8 @@ function Welcome() {
           </ul>
           <div className="row">
             <div className="col">
-              <div className="collapse multi-collapse" id="multiCollapseExample1">
-                <div className="card card-body">
+              <div className="collapse multi-collapse pb-3" id="multiCollapseExample1">
+                <div className="card card-body what-is">
                   LIFE TOGETHER is a platform created to help groups of people
                   sharing a living space with upkeep and maintenance of their
                   homes.
@@ -47,8 +47,8 @@ function Welcome() {
               </div>
             </div>
             <div className="col">
-              <div className="collapse multi-collapse" id="multiCollapseExample2">
-                <div className="card card-body">
+              <div className="collapse multi-collapse pb-3" id="multiCollapseExample2">
+                <div className="card card-body how-to">
                   Simply register or log in below to access your profile. From
                   there, you can create a new group and invite groupmates to get
                   started. With LIFE TOGETHER, you can select and assign tasks
