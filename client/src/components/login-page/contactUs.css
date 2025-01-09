@@ -1,12 +1,19 @@
-/* .contactUs-btn {
-    margin-top: 4rem;
-    margin-left: 2rem;
-} */
-
-/* .one {
-    min-height: 120px;
+.contact-btn {
+  background-color: white;
 }
 
-.two {
-    width: 300px;
-} */
+.contact-btn:hover {
+  background-color: #f7e8d7;
+  color: #483b32;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  
+}
