@@ -29,15 +29,30 @@ const getChore = async (req, res) => {
     }
 }
 
+const getCompletedChores = async (_req, res) => {
+    try {
+        const completedChores = await Cleaning.findAll({ 
+            where: {
+                isComplete: true
+            }
+        });
+        res.json(completedChores);
+    } 
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
 // POST
 
 const createChore = async (req, res) => {
-    const { name, description, deadline } = req.body;
+    const { name, description, deadline, isComplete } = req.body;
     try {
         const newChore = await Cleaning.create({
             name: name,
             description: description,
-            deadline: deadline
+            deadline: deadline,
+            isComplete: isComplete
         });
         res.status(201).json({ message: 'Chore successfully added', data: newChore });
     } 
@@ -52,27 +67,32 @@ const createChores = async (_req, res) => {
             {
                 name: 'Dishes',
                 description: 'Load the dishwasher and handwash the rest',
-                deadline: ''
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Laundry',
                 description: 'Wash, dry, and fold all the laundry',
-                deadline: ''
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Mopping',
                 description: 'Mop all of the hard floors',
-                deadline: ''
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Vacuuming',
                 description: 'Vacuum the house',
-                deadline: ''
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Dusting',
                 description: 'Dust all surfaces',
-                deadline: ''
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             }
         ]);
         res.status(201).json({ message: 'Cleaning chores data seeded' });
@@ -86,7 +106,7 @@ const createChores = async (_req, res) => {
 
 const updateChore = async (req, res) => {
     const { id } = req.params;
-    const { name, description, deadline } = req.body;
+    const { name, description, deadline, isComplete } = req.body;
 
     if (!name || description === undefined || deadline === undefined) {
         return res.status(400).json({ message: 'Name is required'})
@@ -98,6 +118,7 @@ const updateChore = async (req, res) => {
             chore.set('name', name);
             chore.set('description', description);
             chore.set('deadline', deadline);
+            chore.set('isComplete', isComplete);
             await chore.save();
             res.json({ message: 'Chore updated successfully', data: chore});
         }
@@ -134,6 +155,8 @@ const router = Router();
 // GET
 
 router.get('/', getAllChores);
+
+router.get('/completed', getCompletedChores);
 
 router.get('/:id', getChore);
 

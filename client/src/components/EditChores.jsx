@@ -13,9 +13,10 @@ function EditChores({ chore }) {
 
     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
     const [month, day, year] = formattedDate.split('/');
-    const today = `${year}-${month}-${day}`;
-    console.log(today);
 
+    const today = `${year}-${month}-${day}`;
+
+    // State Variables
     const [name, setName] = useState(chore.name);
     const [description, setDescription] = useState(chore.description || '');
     const [deadline, setDeadline] = useState(chore.deadline);
