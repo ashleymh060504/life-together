@@ -2,13 +2,29 @@ import { useState } from 'react';
 
 function AddChore() {
 
+    // Dates
+    const date = new Date();
+    const options = {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }; 
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    const [month, day, year] = formattedDate.split('/');
+    const formattedDeadline = `${year}-${month}-${day}`;
+    console.log(formattedDeadline);
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
+    const [deadline, setDeadline] = useState(formattedDeadline);
 
+    // Adding a Chore
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const body = { name, description };
+            const body = { name, description, deadline };
             const response = await fetch('http://localhost:3001/api/cleaning-chores/', {
                 method: 'POST',
                 headers: {
@@ -30,12 +46,17 @@ function AddChore() {
         }
     }
 
+    // Handle value change
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
 
     const handleDescriptionChange = (e) => {
         setDescription(e.target.value);
+    }
+
+    const handleDeadlineChange = (e) => {
+        setDeadline(e.target.value);
     }
 
     return(
@@ -58,8 +79,9 @@ function AddChore() {
                                     <div className="modal-body">
                                         {/* Form */}
                                         <form id='addChoreForm' className='d-flex flex-wrap needs-validation' onSubmit={onSubmitForm}>
-                                            <input type="text" className='form-control' id='floatingInputAdd' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
+                                            <input type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
                                             <textarea className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
+                                            <input type="date" className='form-control mt-3' value={deadline} min={deadline} onChange={handleDeadlineChange}/>
                                         </form>
                                         {/*  */}
                                     </div>

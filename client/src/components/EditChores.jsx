@@ -2,9 +2,27 @@ import { useState } from 'react';
 
 function EditChores({ chore }) {
 
+    // Dates
+    const date = new Date();
+    const options = {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }; 
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    const [month, day, year] = formattedDate.split('/');
+    const today = `${year}-${month}-${day}`;
+    console.log(today);
+
     const [name, setName] = useState(chore.name);
     const [description, setDescription] = useState(chore.description || '');
+    const [deadline, setDeadline] = useState(chore.deadline);
 
+    const formattedDeadline = deadline ? deadline.slice(0, 10) : today;
+
+    // Handle Input Change
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
@@ -13,12 +31,16 @@ function EditChores({ chore }) {
         setDescription(e.target.value);
     }
 
+    const handleDeadlineChange = (e) => {
+        setDeadline(e.target.value);
+    }
+
     // PUT
 
     const updateChore = async (e) => {
         e.preventDefault();
         try {
-            const body = { name, description };
+            const body = { name, description, deadline };
             console.log(body);
             const response = await fetch(`http://localhost:3001/api/cleaning-chores/${chore.id}`, {
                 method: 'PUT',
@@ -51,6 +73,7 @@ function EditChores({ chore }) {
             <div className="modal fade" id={`id${chore.id}`} tabIndex="-1" aria-labelledby={`updateModalLabel${chore.id}`} aria-hidden="true" onClick={() => {
                 setName(chore.name);
                 setDescription(chore.description);
+                setDeadline(chore.deadline);
             }}>
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -59,18 +82,21 @@ function EditChores({ chore }) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => {
                                 setName(chore.name);
                                 setDescription(chore.description);
+                                setDeadline(chore.deadline);
                             }}></button>
                         </div>
                         <div className="modal-body">
                             <form id='editChoreForm' className='d-flex flex-wrap needs-validation'>
                                 <input type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
-                                <textarea className='form-control mt-3' value={description || ''} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
+                                <textarea className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
+                                <input type="date" className='form-control mt-3' value={formattedDeadline} min={today} onChange={handleDeadlineChange}/>
                             </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => {
                                 setName(chore.name);
                                 setDescription(chore.description);
+                                setDeadline(chore.deadline);
                             }}>
                                 Close
                             </button>
