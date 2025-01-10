@@ -1,0 +1,135 @@
+
+/* Base Container */
+.page-container {
+    padding: 5px;
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    border: 2px solid black;
+    padding: 10px 30px;
+    width: fit-content;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  /* Task Section Headers */
+  .task-section-header {
+    border: 2px solid black;
+    padding: 5px 15px;
+    display: inline-block;
+    margin: 20px 0 10px 0;
+    font-size: 1.1em;
+    font-weight: normal;
+  }
+  
+  /* Task List Container */
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Task Item */
+  .task-item {
+    border: 2px solid black;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Task Content Container */
+  .task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Task Text */
+  .task-text {
+    border: 2px solid black;
+    padding: 5px 10px;
+    flex: 1;
+  }
+  
+  /* Task Action Buttons */
+  .task-button {
+    border: 2px solid black;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: white;
+    white-space: nowrap;
+  }
+  
+  /* Section Spacing */
+  .task-section {
+    margin-top: 30px;
+  }
+  
+  /* Task List Wrapper */
+  .task-list-wrapper {
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  /* Button Hover State */
+  .task-button:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  /* Main Content Layout */
+  .main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Completed Section */
+  .completed-section {
+    margin-bottom: 30px;
+  }
+  
+  /* Page Layout */
+  .page-wrapper {
+    background-color: #fff;
+    min-height: 100vh;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .task-content {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .task-button {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+  
+  /* Task Button Sizing */
+  .task-action-button {
+    min-width: 100px;
+    text-align: center;
+  }
+  
+  /* Task Element Spacing */
+  .task-element {
+    margin: 0 5px;
+  }
+  
+  /* Button Consistency */
+  .task-button {
+    padding: 8px 15px;
+  }
+  
+  /* Task Section Background */
+  .task-section-bg {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
