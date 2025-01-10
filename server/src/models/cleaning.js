@@ -33,6 +33,7 @@ export function CleaningFactory(sequelize) {
             },
             isComplete: {
                 type: DataTypes.BOOLEAN,
+                field: "isComplete",
                 defaultValue: false
             },
             user_id: {
