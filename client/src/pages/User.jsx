@@ -42,9 +42,8 @@ const User = () => {
         <div>
         <h1 class = "text-center">My profile</h1>
           </div>
-            <h2>Assigned Tasks</h2>
+            <h2><CleaningChores/></h2>
               <ul>
-                <CleaningChores/>
               {tasks.map((task, index) => (
               <li key={index}>
                 <div>
