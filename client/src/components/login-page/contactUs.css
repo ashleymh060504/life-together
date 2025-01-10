@@ -15,5 +15,20 @@
   position: absolute;
   top: 50px;
   left: 100px;
-  
+}
+
+.input-border {
+    border: 2px solid #483b32;
+}
+
+.bg-modal {
+  background-color: #f7e8d7;
+  border: 5px #483b32 solid;
+  border-radius: 40px;
+  box-shadow: 10px 10px;
+}
+
+.btn-hover:hover {
+  background-color: #483b32;
+  color: #f7e8d7;
 }

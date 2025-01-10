@@ -21,7 +21,7 @@ function ContactUs() {
           aria-hidden="true"
         >
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-modal p-2">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
                   Contact Us
@@ -36,10 +36,12 @@ function ContactUs() {
               <div class="modal-body">
                 <form>
                   <div className="form-group">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name" className="mb-1">
+                      Name:
+                    </label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control mb-2 w-100 input-border"
                       // onChange={handleChange}
                       id="name"
                       placeholder="Enter your name..."
@@ -47,10 +49,12 @@ function ContactUs() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email" className="mb-1">
+                      Email:
+                    </label>
                     <input
                       type="email"
-                      className="form-control"
+                      className="form-control mb-2 input-border"
                       // onChange={handleChange}
                       id="email"
                       placeholder="Enter your email..."
@@ -58,9 +62,11 @@ function ContactUs() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="message">Message:</label>
+                    <label htmlFor="message" className="mb-1">
+                      Message:
+                    </label>
                     <textarea
-                      className="form-control"
+                      className="form-control input-border"
                       id="message"
                       // onChange={handleChange}
                       rows="3"
@@ -73,12 +79,12 @@ function ContactUs() {
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn btn-hover"
                   data-bs-dismiss="modal"
                 >
                   Close
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-hover">
                   Submit
                 </button>
               </div>

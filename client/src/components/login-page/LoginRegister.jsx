@@ -3,8 +3,8 @@ import "./loginRegister.css";
 function LoginRegister() {
   return (
     <>
-      <div class="row row-cols-1 row-cols-md-2 g-2 mt-3">
-        <div class="col container">
+      <div class="row row-cols-1 row-cols-md-2 g-2">
+        <div class="col container ">
           <div class="card w-75 mx-auto mt-3 bg-cards">
             <div class="card-body">
               <h5 class="card-title mb-3 text-center">Login</h5>
