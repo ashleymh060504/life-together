@@ -1,5 +1,5 @@
-import Navbar from "../components/navbar"
-
+import Navbar from "../components/Navbar";
+import CleaningChores from "../components/cleaning-chores";
 import React, { useState } from 'react';
 
 const User = () => {
@@ -39,56 +39,35 @@ const User = () => {
   return (
     <div>
       <div><Navbar/></div>
-    <div>
-      <h1 className="text-center">My Profile</h1>
-      <div>
-        <input 
-          type="text" 
-          placeholder="Task Name" 
-          value={taskName} 
-          onChange={(e) => setTaskName(e.target.value)} 
-        />
-        <input 
-          type="text" 
-          placeholder="Username" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)} 
-        />
-        <input 
-          type="date" 
-          value={deadline} 
-          onChange={(e) => setDeadline(e.target.value)} 
-        />
-        <button onClick={addTask}>Add Task</button>
-      </div>
-
-      <h2>Assigned Tasks</h2>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            <div>
-              <span>{task.taskName} - {task.username} - {task.deadline}</span>
-              <button onClick={() => updateStatus(index)}>
+        <div>
+        <h1 class = "text-center">My profile</h1>
+          </div>
+            <h2>Assigned Tasks</h2>
+              <ul>
+                <CleaningChores/>
+              {tasks.map((task, index) => (
+              <li key={index}>
+                <div>
+                <span>{task.taskName} - {task.username} - {task.deadline}</span>
+                <button onClick={() => updateStatus(index)}>
                 {task.completed ? 'Undo' : 'Complete'}
-              </button>
-              <button onClick={() => completeTask(index)}>Complete Task</button>
-              <button onClick={() => deleteTask(index)}>Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-
+                </button>
+                <button onClick={() => completeTask(index)}>Complete Task</button>
+                <button onClick={() => deleteTask(index)}>Delete</button>
+              </div>
+            </li>
+          ))}
+       </ul>
       <h2>Completed Tasks</h2>
       <ul>
         {completedTasks.map((task, index) => (
           <li key={index}>
             <span>{task.taskName} - {task.username} - {task.deadline}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-    </div>
-  );
+           </li>
+           ))}
+         </ul>
+       </div>
+ );
 };
 
 export default User;
