@@ -1,5 +1,4 @@
 
-// Added modal for looks
 function Navbar(props) {
     return (
       <>

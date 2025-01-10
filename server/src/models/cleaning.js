@@ -4,6 +4,8 @@ export class Cleaning extends Model {
     id;
     name;
     description;
+    deadline;
+    isComplete;
     user_id;
 }
 
@@ -21,6 +23,17 @@ export function CleaningFactory(sequelize) {
             },
             description: {
                 type: DataTypes.TEXT
+            },
+            deadline: {
+                type: DataTypes.DATE,
+                allowNull: true,
+                validate: {
+                    isDate: true
+                }
+            },
+            isComplete: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
             },
             user_id: {
                 type: DataTypes.INTEGER,

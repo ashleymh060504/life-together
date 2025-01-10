@@ -5,11 +5,7 @@ import { Cleaning } from '../../models/cleaning.js';
 
 const getAllChores = async (_req, res) => {
     try {
-        const cleaningChores = await Cleaning.findAll({
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const cleaningChores = await Cleaning.findAll();
         res.json(cleaningChores);
     } 
     catch (err) {
@@ -20,11 +16,7 @@ const getAllChores = async (_req, res) => {
 const getChore = async (req, res) => {
     const { id } = req.params;
     try {
-        const cleaningChore = await Cleaning.findByPk(id, {
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const cleaningChore = await Cleaning.findByPk(id);
         if (cleaningChore) {
             res.json(cleaningChore);
         }
@@ -40,11 +32,12 @@ const getChore = async (req, res) => {
 // POST
 
 const createChore = async (req, res) => {
-    const { name, description } = req.body;
+    const { name, description, deadline } = req.body;
     try {
         const newChore = await Cleaning.create({
             name: name,
-            description: description
+            description: description,
+            deadline: deadline
         });
         res.status(201).json({ message: 'Chore successfully added', data: newChore });
     } 
@@ -58,23 +51,28 @@ const createChores = async (_req, res) => {
         Cleaning.bulkCreate([
             {
                 name: 'Dishes',
-                description: 'Load the dishwasher and handwash the rest'
+                description: 'Load the dishwasher and handwash the rest',
+                deadline: ''
             },
             {
                 name: 'Laundry',
-                description: 'Wash, dry, and fold all the laundry'
+                description: 'Wash, dry, and fold all the laundry',
+                deadline: ''
             },
             {
                 name: 'Mopping',
                 description: 'Mop all of the hard floors',
+                deadline: ''
             },
             {
                 name: 'Vacuuming',
-                description: 'Vacuum the house'
+                description: 'Vacuum the house',
+                deadline: ''
             },
             {
                 name: 'Dusting',
-                description: 'Dust all surfaces'
+                description: 'Dust all surfaces',
+                deadline: ''
             }
         ]);
         res.status(201).json({ message: 'Cleaning chores data seeded' });
@@ -88,21 +86,18 @@ const createChores = async (_req, res) => {
 
 const updateChore = async (req, res) => {
     const { id } = req.params;
-    const { name, description } = req.body;
+    const { name, description, deadline } = req.body;
 
-    if (!name || description === undefined) {
-        return res.status(400).json({ message: 'Name and description are required'})
+    if (!name || description === undefined || deadline === undefined) {
+        return res.status(400).json({ message: 'Name is required'})
     }
     
     try {
-        const chore = await Cleaning.findByPk(id, {
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const chore = await Cleaning.findByPk(id);
         if (chore) {
             chore.set('name', name);
             chore.set('description', description);
+            chore.set('deadline', deadline);
             await chore.save();
             res.json({ message: 'Chore updated successfully', data: chore});
         }

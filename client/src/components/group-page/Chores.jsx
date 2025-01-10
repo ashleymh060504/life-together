@@ -57,8 +57,7 @@ function Chores() {
             });
 
             setChores(chores.filter(chore => chore.id !== id));
-
-            console.log(chore);
+            window.location = '/together'
         } 
         catch (err) {
             console.error(err.message);
@@ -91,24 +90,44 @@ function Chores() {
                             <tr key={chore.id}>
                                 <th scope='row'>{index + 1}</th>
                                 <td>
-                                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target={`#collapseExample${chore.id}`} aria-expanded="false" aria-controls="collapseExample">
+                                    <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target={`#collapseExample${chore.id}`} aria-expanded="false" aria-controls="collapseExample">
                                         {chore.name}
                                     </button>
 
-                                    <div class="collapse" id={`collapseExample${chore.id}`}>
-                                        <div class="card card-body">
+                                    <div className="collapse" id={`collapseExample${chore.id}`}>
+                                        <div className="card card-body">
                                             {chore.description}
                                         </div>
                                     </div>
                                 </td>
                                 <td>{'<USER>'}</td>
                                 <td>
-                                    <button className='btn btn-danger' onClick={() => deleteChore(chore.id)}>DELETE</button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        DELETE
+                                    </button>
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Deleting Chore</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {`Chore to be deleted: ${chore.name}`}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button className='btn btn-danger' onClick={() => deleteChore(chore.id)}>CONFIRM</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <EditChores chore={chore}/>
                                 </td>
-                                <td>{'<DEADLINE>'}</td>
+                                <td>{new Date(chore.deadline).toLocaleDateString('en-US')}</td>
                             </tr>
                         ))}
                     </tbody>
