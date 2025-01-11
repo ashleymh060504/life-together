@@ -1,4 +1,3 @@
-
 function Navbar(props) {
     return (
       <>
@@ -17,12 +16,10 @@ function Navbar(props) {
                   <a className="nav-link" href='/'>
                     <span className="navbar-text">{props.logOut}</span>
                   </a>
-                </button>
-            </div>
+              </button>
           </div>
-        </nav>
-      </>
-    )
-  };
-  
-  export default Navbar;
+      </nav>
+  );
+}
+
+export default Navbar;
