@@ -54,7 +54,7 @@ const userLogin = () => {
               </div>
 
               <button class="card-btn card-btn-bg">Log in</button>
-            </div>
+            </form>
           </div>
         </div>
         <div class="col container">
@@ -80,8 +80,7 @@ const userLogin = () => {
                 <label for="floatingPasswordRegister">Password</label>
               </div>
               <button class="card-btn card-btn-bg">Register</button>
-            </div>
-
+            </form>
           </div>
         </div>
       </div>
