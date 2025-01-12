@@ -4,7 +4,8 @@ body {
 
 .header {
   background-color: #fffdf5;
-  border-radius: 20px;
+  border-radius: 90px;
+  box-shadow: white 10px 10px 10px 10px;
 }
 
 .landingpage-title {
