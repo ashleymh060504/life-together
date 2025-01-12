@@ -27,8 +27,8 @@ const userLogin = () => {
 
   return (
     <>
-      <div class="row row-cols-1 row-cols-md-2 g-2">
-        <div class="col container ">
+      <div class="row row-cols-1 row-cols-md-2 g-2 test">
+        <div class="col container my-auto">
           <div class="card w-75 mx-auto mt-3 bg-cards">
             <form class="card-body" onSubmit={handleSubmit}>
               <h5 class="card-title mb-3 text-center">Login</h5>
@@ -52,8 +52,9 @@ const userLogin = () => {
                 />
                 <label for="floatingPasswordLogin">Password</label>
               </div>
-              <button class="card-btn">Login</button>
-            </form>
+
+              <button class="card-btn card-btn-bg">Log in</button>
+            </div>
           </div>
         </div>
         <div class="col container">
@@ -78,8 +79,9 @@ const userLogin = () => {
                 />
                 <label for="floatingPasswordRegister">Password</label>
               </div>
-              <button class="card-btn">Register</button>
-            </form>
+              <button class="card-btn card-btn-bg">Register</button>
+            </div>
+
           </div>
         </div>
       </div>
