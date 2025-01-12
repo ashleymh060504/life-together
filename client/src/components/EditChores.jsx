@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './user-page/chores.css';
 
 function EditChores({ chore }) {
 
@@ -52,7 +53,7 @@ function EditChores({ chore }) {
             });
 
             if (response.ok) {
-                window.location = '/together';
+                window.location = '/user';
             }
             else {
                 console.error('Failed to update chore:', response.status, await response.text());
@@ -67,38 +68,41 @@ function EditChores({ chore }) {
 
     return(
         <>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#id${chore.id}`}>
-                UPDATE
-            </button>
-
-            <div className="modal fade" id={`id${chore.id}`} tabIndex="-1" aria-labelledby={`updateModalLabel${chore.id}`} aria-hidden="true" onClick={() => {
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#id${chore.id}`} onClick={() => {
                 setName(chore.name);
                 setDescription(chore.description);
                 setDeadline(chore.deadline);
             }}>
+                UPDATE
+            </button>
+
+            <div className="modal fade" id={`id${chore.id}`} tabIndex="-1" aria-labelledby={`updateModalLabel${chore.id}`} aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id={`updateModalLabel${chore.id}`}>Update your Chore</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => {
-                                setName(chore.name);
-                                setDescription(chore.description);
-                                setDeadline(chore.deadline);
-                            }}></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <form id='editChoreForm' className='d-flex flex-wrap needs-validation'>
-                                <input type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
-                                <textarea className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
-                                <input type="date" className='form-control mt-3' value={formattedDeadline} min={today} onChange={handleDeadlineChange}/>
+                                <label className='form-control text-start no-border' for="editNameValue">
+                                    Chore Name
+                                    <input id='editNameValue' type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
+                                </label>
+
+                                <label className='form-control text-start mt-2 no-border' for="editDescriptionValue">
+                                    Chore Description
+                                    <textarea id='editDescriptionValue' className='form-control' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
+                                </label>
+
+                                <label className='form-control mt-2 text-start no-border' for="editDeadlineValue">
+                                    Chore Deadline
+                                    <input id='editDeadlineValue' type="date" className='form-control' value={formattedDeadline} min={today} onChange={handleDeadlineChange}/>
+                                </label>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => {
-                                setName(chore.name);
-                                setDescription(chore.description);
-                                setDeadline(chore.deadline);
-                            }}>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                                 Close
                             </button>
                             <button type="button" form='editChoreForm' className="btn btn-primary" onClick={e => updateChore(e)}>Edit changes</button>

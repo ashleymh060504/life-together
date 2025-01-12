@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './chores.css';
 
 function AddChore() {
 
@@ -33,7 +34,7 @@ function AddChore() {
             });
 
             if (response.ok) {
-                window.location = '/together';
+                window.location = '/user';
                 console.log(await response.json());
             }
             else {
@@ -79,8 +80,11 @@ function AddChore() {
                                         {/* Form */}
                                         <form id='addChoreForm' className='d-flex flex-wrap needs-validation' onSubmit={onSubmitForm}>
                                             <input type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
-                                            <textarea className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
-                                            <input type="date" className='form-control mt-3' value={deadline} min={deadline} onChange={handleDeadlineChange}/>
+                                            <textarea id='addDeadlineValue' className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
+                                            <label className='form-control mt-3' for="addDeadlineValue">
+                                                Chore Deadline
+                                                <input id='addDeadlineValue' type="date" className='form-control' value={deadline} min={deadline} onChange={handleDeadlineChange}/>
+                                            </label>
                                         </form>
                                         {/*  */}
                                     </div>
