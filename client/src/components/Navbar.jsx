@@ -17,8 +17,10 @@ function Navbar(props) {
                     <span className="navbar-text">{props.logOut}</span>
                   </a>
               </button>
+              </div>
           </div>
       </nav>
+      </>
   );
 }
 
