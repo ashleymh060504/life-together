@@ -10,7 +10,7 @@ export const authenticateToken = (req, res, next) => {
       if (err) {
         return res.sendStatus(403);
       }
-      req.user = user; // No type assertion needed in JavaScript
+      req.user = user; 
       return next();
     });
   } else {

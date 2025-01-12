@@ -2,6 +2,9 @@
 
 import { Router } from 'express';
 import { User } from '../../models/index.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 const getAllUsers = async (_req, res) => {
     try {
@@ -81,7 +84,10 @@ const createUsers = async (_req, res) => {
     }
 }
 
+dotenv.config();
+
 const router = Router();
+
 
 // Get All Users
 
