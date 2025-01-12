@@ -9,23 +9,13 @@ function Navbar(props) {
 
                 <li className="nav-item">
                   <button type="button" className="btn btn-primary">
-                    <a className="nav-link" href="/">
-                      <span className="navbar-text">{props.one}</span>
-                    </a>
-                  </button>
-                </li>
-                <li className="nav-item">
-                    <span className="navbar-text">{props.two}</span>
-                </li>
-                <li className="nav-item">
-                  <button type="button" className="btn btn-primary">
-                      <span className="navbar-text">{props.three}</span>
+                      <span className="navbar-text">{props.darkMode}</span>
                   </button>
                 </li>
               </ul>
                 <button type="button" className="btn btn-primary">
-                  <a className="nav-link" href="/">
-                    <span className="navbar-text">{props.btn}</span>
+                  <a className="nav-link" href='/'>
+                    <span className="navbar-text">{props.logOut}</span>
                   </a>
                 </button>
             </div>

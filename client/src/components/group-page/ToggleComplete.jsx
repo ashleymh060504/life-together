@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function ToggleComplete({ chore }) {
 
@@ -41,7 +41,7 @@ function ToggleComplete({ chore }) {
             <div className="collapse" id={`collapseExample${chore.id}`}>
                 <div className="card card-body">
                     {chore.description}
-                        <button className={`btn ${isComplete ? 'btn-danger' : 'btn-success'}`} type='button' onClick={e => status(e)}>{isComplete ? 'NOT COMPLETE' : 'COMPLETE'}</button>
+                        <button className={`btn ${isComplete ? 'btn-danger' : 'btn-success'} mt-2`} type='button' onClick={e => status(e)}>{isComplete ? 'NOT COMPLETE' : 'COMPLETE'}</button>
                 </div>
             </div>
         </>

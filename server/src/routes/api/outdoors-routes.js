@@ -5,14 +5,11 @@ import { Outdoors } from '../../models/outdoors.js';
 
 const getAllChores = async (_req, res) => {
     try {
-        const chores = await Outdoors.findAll({
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const chores = await Outdoors.findAll();
         res.json(chores);
     } 
     catch (err) {
+        console.error('Error fetching chores:', err);  
         res.status(500).json({ message: err.message });
     }
 };
@@ -20,11 +17,7 @@ const getAllChores = async (_req, res) => {
 const getChore = async (req, res) => {
     const { id } = req.params;
     try {
-        const chore = await Outdoors.findByPk(id, {
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const chore = await Outdoors.findByPk(id);
         if (chore) {
             res.json(chore);
         }
@@ -40,11 +33,13 @@ const getChore = async (req, res) => {
 // POST
 
 const createChore = async (req, res) => {
-    const { name, description } = req.body;
+    const { name, description, deadline, isComplete } = req.body;
     try {
         const newChore = await Outdoors.create({
             name: name,
-            description: description
+            description: description,
+            deadline: deadline,
+            isComplete: isComplete
         });
         res.status(201).json({ message: 'Chore successfully added', data: newChore });
     } 
@@ -58,23 +53,33 @@ const createChores = async (_req, res) => {
         await Outdoors.bulkCreate([
             {
                 name: 'Mow the Lawn',
-                description: 'Mow the front and back lawn'
+                description: 'Mow the front and back lawn',
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Weed the Garden',
-                description: 'Pull all the weeds in the garden'
+                description: 'Pull all the weeds in the garden',
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Trim the Bushes',
-                description: 'Trim all the bushes in the front and back yard'
+                description: 'Trim all the bushes in the front and back yard',
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Water the Plants',
-                description: 'Water all the plants in the garden'
+                description: 'Water all the plants in the garden',
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
             {
                 name: 'Rake the Leaves',
-                description: 'Rake all the leaves in the front and back yard'
+                description: 'Rake all the leaves in the front and back yard',
+                deadline: '2025-01-11T00:00:00.000Z',
+                isComplete: false
             },
         ]);
         res.status(201).json({ message: 'Outdoor chores data seeded' });
@@ -88,21 +93,19 @@ const createChores = async (_req, res) => {
 
 const updateChore = async (req, res) => {
     const { id } = req.params;
-    const { name, description } = req.body;
+    const { name, description, deadline, isComplete } = req.body;
 
     if (!name || description === undefined) {
         return res.status(400).json({ message: 'Name and description are required'});
     }
 
     try {
-        const chore = await Outdoors.findByPk(id, {
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-            }
-        });
+        const chore = await Outdoors.findByPk(id);
         if (chore) {
             chore.set('name', name);
             chore.set('description', description);
+            chore.set('deadline', deadline);
+            chore.set('isComplete', isComplete);
             await chore.save();
             res.json({ message: 'Chore updated successfully', data: chore});
         }
@@ -157,6 +160,3 @@ router.put('/:id', updateChore);
 router.delete('/:id', deleteChore);
 
 export { router as outdoorChoresRouter};
-
-
-

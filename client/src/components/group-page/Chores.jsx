@@ -99,9 +99,8 @@ function Chores() {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">CHORE</th>
-                            <th scope="col">USER</th>
-                            <th scope="col">DELETE</th>
                             <th scope="col">UPDATE</th>
+                            <th scope="col">DELETE</th>
                             <th scope="col">DEADLINE</th>
                         </tr>
                     </thead>
@@ -118,8 +117,10 @@ function Chores() {
                                     </button>
                                     <ToggleComplete chore={chore}/>
                                 </td>
-                                {/* User */}
-                                <td>{'<USER>'}</td>
+                                {/* Update */}
+                                <td>
+                                    <EditChores chore={chore}/>
+                                </td>
                                 {/* Delete */}
                                 <td>
                                     <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={`#deleteModal${chore.id}`}>
@@ -144,10 +145,6 @@ function Chores() {
                                         </div>
                                     </div>
                                 </td>
-                                {/* Update */}
-                                <td>
-                                    <EditChores chore={chore}/>
-                                </td>
                                 {/* Deadline */}
                                 <td>{new Date(chore.deadline).toLocaleDateString('en-US', { timeZone: 'UTC' })}</td>
                             </tr>
@@ -163,9 +160,8 @@ function Chores() {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">CHORE</th>
-                            <th scope="col">USER</th>
-                            <th scope="col">DELETE</th>
                             <th scope="col">UPDATE</th>
+                            <th scope="col">DELETE</th>
                             <th scope="col">DEADLINE</th>
                         </tr>
                     </thead>
@@ -182,8 +178,10 @@ function Chores() {
                                     </button>
                                     <ToggleComplete chore={completedChore}/>
                                 </td>
-                                {/* User */}
-                                <td>{'<USER>'}</td>
+                                {/* Update */}
+                                <td>
+                                    <EditChores chore={completedChore}/>
+                                </td>
                                 {/* Delete */}
                                 <td>
                                     <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={`#deleteModal${completedChore.id}`}>
@@ -207,10 +205,6 @@ function Chores() {
                                             </div>
                                         </div>
                                     </div>
-                                </td>
-                                {/* Update */}
-                                <td>
-                                    <EditChores chore={completedChore}/>
                                 </td>
                                 {/* Deadline */}
                                 <td>{new Date(completedChore.deadline).toLocaleDateString('en-US', { timeZone: 'UTC' })}</td>
