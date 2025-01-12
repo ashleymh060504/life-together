@@ -1,35 +1,29 @@
 function Navbar(props) {
   return (
+    <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid d-flex justify-content-between">
-              {/* Left side buttons */}
-              <div className="d-flex align-items-center">
-                  <button type="button" className="btn btn-primary me-2">
-                      <a className="nav-link" href="/">
-                          {props.one}
-                      </a>
-                  </button>
-                  
-                  <span className="navbar-text mx-3">
-                      {props.two}
-                  </span>
-                  
-                  <button type="button" className="btn btn-primary">
-                      <span className="navbar-text">
-                          {props.three}
-                      </span>
-                  </button>
-              </div>
-
-              {/* My profile button */}
-              <button type="button" className="btn btn-primary">
-                  <a className="nav-link" href="/User">
-                      {props.btn}
-                  </a>
-              </button>
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarText">
+    
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <button type="button" className="btn btn-primary">
+                  <span className="navbar-text">{props.darkMode}</span>
+                </button>
+              </li>
+            </ul>
+  
+            <button type="button" className="btn btn-primary">
+              <a className="nav-link" href='/'>
+                <span className="navbar-text">{props.logOut}</span>
+              </a>
+            </button>
           </div>
+        </div>
       </nav>
+    </>
+
   );
-}
+};
 
 export default Navbar;
