@@ -3,10 +3,9 @@ import "./contactUs.css";
 function ContactUs() {
   return (
     <>
-      <div class="position-relative">
-        <button
+         <button
           type="button"
-          class="btn contact-btn contactUs-btn position-absolute"
+          class="btn contact-btn ccontactUs-btn contacttest "
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
@@ -91,7 +90,6 @@ function ContactUs() {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
