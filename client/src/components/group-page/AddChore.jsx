@@ -14,7 +14,6 @@ function AddChore() {
     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
     const [month, day, year] = formattedDate.split('/');
     const formattedDeadline = `${year}-${month}-${day}`;
-    console.log(formattedDeadline);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
