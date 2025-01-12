@@ -26,7 +26,7 @@ function ToggleComplete({ chore }) {
                 console.error('Failed to update chore:', response.status, await response.text());
             }
             else {
-                window.location = '/together';
+                window.location = '/user';
             }
             console.log(await response.json());
         } 

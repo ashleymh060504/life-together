@@ -34,7 +34,7 @@ function AddChore() {
             });
 
             if (response.ok) {
-                window.location = '/together';
+                window.location = '/user';
                 console.log(await response.json());
             }
             else {

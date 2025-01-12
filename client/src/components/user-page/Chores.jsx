@@ -73,7 +73,7 @@ function Chores() {
 
             if (response.ok) {
                 setChores(chores.filter(chore => chore.id !== id));
-                window.location = '/together'
+                window.location = '/user'
             }
             else {
                 console.error('Failed to delete chore:', response.status, await response.text());
