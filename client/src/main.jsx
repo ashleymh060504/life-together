@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import App from './App.jsx'
 import User from './pages/User.jsx'
-import Login from './pages/Login.jsx'
+import LoginPage from './components/login-page/loginPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,12 +17,12 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />
+        element: <LoginPage />
       },
       {
         path: '/user',
         element: <User />
-      }
+      },
     ]
   }
 ])
