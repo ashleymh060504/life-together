@@ -5,7 +5,7 @@ export class Chores extends Model {
     name;
     assigned_to;
     group_id;
-    due_date;
+    deadline;
     completed;
 };
 
@@ -40,16 +40,16 @@ export function ChoreFactory(sequelize) {
                 },
                 onDelete: 'CASCADE'
             },
-            due_date: {
+            deadline: {
                 type: DataTypes.DATE,
                 allowNull: false,
                 validate: {
                     isDate: true
                 }
             },
-            completed: {
+            isComplete: {
                 type: DataTypes.BOOLEAN,
-                allowNull: false,
+                field: "isComplete",
                 defaultValue: false
             }
         },

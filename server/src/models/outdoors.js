@@ -4,6 +4,8 @@ export class Outdoors extends Model {
     id;
     name;
     description;
+    deadline;
+    isCompleted;
     user_id;
 }
 
@@ -21,6 +23,18 @@ export function OutdoorsFactory(sequelize) {
             },
             description: {
                 type: DataTypes.TEXT,
+            },
+            deadline: {
+                type: DataTypes.DATE,
+                allowNull: true,
+                validate: {
+                    isDate: true
+                }
+            },
+            isComplete: {
+                type: DataTypes.BOOLEAN,
+                field: "isComplete",
+                defaultValue: false
             },
             user_id: {
                 type: DataTypes.INTEGER,

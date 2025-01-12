@@ -1,3 +1,7 @@
 .border-test {
     border: 2px solid pink;
 }
+
+.no-border {
+    border: none;
+}
