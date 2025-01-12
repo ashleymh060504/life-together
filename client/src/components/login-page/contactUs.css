@@ -7,15 +7,7 @@
   color: #483b32;
 }
 
-.position-relative {
-  position: relative;
-}
 
-.position-absolute {
-  position: absolute;
-  top: 50px;
-  left: 100px;
-}
 
 .input-border {
     border: 2px solid #483b32;
@@ -31,4 +23,8 @@
 .btn-hover:hover {
   background-color: #483b32;
   color: #f7e8d7;
+}
+
+.contacttest {
+  border: 5px black solid;
 }
