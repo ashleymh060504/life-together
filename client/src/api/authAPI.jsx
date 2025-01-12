@@ -1,22 +1,11 @@
-const login = async (userInfo) => {
-    try {
-      const response = await fetch('/auth/login', {
+export const login = async (loginData) => {
+  const response = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userInfo),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(loginData),
       });
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(`Error: ${errorData.message}`);
+        throw new Error('Login failed');
       }
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.log('Error from user login: ', err);
-      return Promise.reject('Could not fetch user info');
-    }
-  }
-  
-  export { login };
+      return response.json();
+    };

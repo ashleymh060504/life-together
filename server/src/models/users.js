@@ -4,9 +4,8 @@ export class User extends Model {
     id;
     first_name;
     last_name;
-    username;
-    password;
     email;
+    password
 };
 
 export function UserFactory(sequelize) {
@@ -25,15 +24,6 @@ export function UserFactory(sequelize) {
                 type: DataTypes.STRING(50),
                 allowNull: false
             },
-            username: {
-                type: DataTypes.STRING(25),
-                allowNull: false,
-                unique: true
-            },
-            password: {
-                type: DataTypes.STRING(255),
-                allowNull: false
-            },
             email: {
                 type: DataTypes.STRING(100),
                 allowNull: false,
@@ -41,6 +31,10 @@ export function UserFactory(sequelize) {
                 validate: {
                     isEmail: true
                 }
+            },
+            password: {
+                type: DataTypes.STRING(255),
+                allowNull: false
             }
         },
         {
