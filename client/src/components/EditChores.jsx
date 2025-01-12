@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './group-page/chores.css';
+import './user-page/chores.css';
 
 function EditChores({ chore }) {
 
@@ -53,7 +53,7 @@ function EditChores({ chore }) {
             });
 
             if (response.ok) {
-                window.location = '/together';
+                window.location = '/user';
             }
             else {
                 console.error('Failed to update chore:', response.status, await response.text());
