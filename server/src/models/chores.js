@@ -1,13 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 
 export class Chores extends Model {
-    id;
-    name;
-    assigned_to;
-    group_id;
-    deadline;
-    completed;
-};
+
+}
 
 export function ChoreFactory(sequelize) {
     Chores.init(
@@ -18,31 +13,15 @@ export function ChoreFactory(sequelize) {
                 primaryKey: true
             },
             name: {
-                type: DataTypes.STRING(100),
-                allowNull: false,
-                validate: {
-                    notEmpty: true
-                }
+                type: DataTypes.STRING(255),
+                allowNull: false
             },
-            assigned_to: {
-                type: DataTypes.INTEGER,
-                references: {
-                    model: 'users',
-                    key: 'id'
-                },
-                onDelete: 'SET NULL'
-            },
-            group_id: {
-                type: DataTypes.INTEGER,
-                references: {
-                    model: 'groups',
-                    key: 'id'
-                },
-                onDelete: 'CASCADE'
+            description: {
+                type: DataTypes.TEXT
             },
             deadline: {
                 type: DataTypes.DATE,
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     isDate: true
                 }
@@ -51,12 +30,19 @@ export function ChoreFactory(sequelize) {
                 type: DataTypes.BOOLEAN,
                 field: "isComplete",
                 defaultValue: false
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                    model: 'users',
+                    key: 'id'
+                },
+                onDelete: 'SET NULL'
             }
         },
         {
             sequelize,
-            tableName: 'chores',
-            timestamps: true
+            tableName: 'chores'
         }
     );
 

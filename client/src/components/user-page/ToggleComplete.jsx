@@ -14,7 +14,7 @@ function ToggleComplete({ chore }) {
             setIsComplete(newIsComplete);
 
             const body = { name, description, deadline, isComplete: newIsComplete };
-            const response = await fetch(`http://localhost:3001/api/cleaning-chores/${chore.id}`, {
+            const response = await fetch(`http://localhost:3001/api/chores/${chore.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

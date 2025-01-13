@@ -1,12 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 
 export class Outdoors extends Model {
-    id;
-    name;
-    description;
-    deadline;
-    isCompleted;
-    user_id;
+
 }
 
 export function OutdoorsFactory(sequelize) {

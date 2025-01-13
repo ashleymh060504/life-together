@@ -1,12 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 
 export class Cleaning extends Model {
-    id;
-    name;
-    description;
-    deadline;
-    isComplete;
-    user_id;
+
 }
 
 export function CleaningFactory(sequelize) {

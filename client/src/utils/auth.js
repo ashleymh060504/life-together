@@ -1,40 +1,41 @@
-class Auth {
-  getProfile() {
-    const token = this.getToken();
-    return this.decodeToken(token);
-  }
+// import { jwtDecode } from 'jwt-decode';
 
-  loggedIn() {
-    const token = this.getToken();
-    return !!token;
-  }
-  
-  isTokenExpired(token) {
-    const decoded = this.decodeToken(token);
-    return decoded?.exp < Date.now() / 1000;
-  } 
+// class AuthService {
+//   getProfile() {
+//     return jwtDecode(this.getToken());
+//   }
 
-  getToken() {
-    return localStorage.getItem('id_token') || '';
-  }
+//   loggedIn() {
+//     const token = this.getToken();
+//     return !!token && !this.isTokenExpired(token);
+//   }
 
-  login(idToken) {
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/user');
-  }
+//   isTokenExpired(token) {
+//     try {
+//       const decoded = jwtDecode(token);
 
-  logout() {
-    localStorage.removeItem('id_token');
-    window.location.assign('/');
-  }
+//       if (decoded?.exp && decoded?.exp < Date.now() / 1000) {
+//         return true;
+//       }
+//     } catch (err) {
+//       return false;
+//     }
+//   }
 
-  decodeToken(token) {
-    if (!token) return null;
-    const payload = token.split('.')[1];
-    const decodedPayload = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
-    
-    return decodedPayload;
-  }
-}
+//   getToken() {
+//     const loggedUser = localStorage.getItem('id_token') || '';
+//     return loggedUser;
+//   }
 
-export default new Auth();
+//   login(idToken) {
+//     localStorage.setItem('id_token', idToken);
+//     window.location.assign('/');
+//   }
+
+//   logout() {
+//     localStorage.removeItem('id_token');
+//     window.location.assign('/');
+//   }
+// }
+
+// export default new AuthService();

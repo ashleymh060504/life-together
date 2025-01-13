@@ -24,11 +24,18 @@ function AddChore() {
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
+            // const token = localStorage.getItem('id_token');
+            // if (!token) {
+            //     console.error('No token found. Please log in');
+            //     return;
+            // }
+
             const body = { name, description, deadline };
-            const response = await fetch('http://localhost:3001/api/cleaning-chores/', {
+            const response = await fetch('http://localhost:3001/api/chores/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
+                    // Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(body)
             });

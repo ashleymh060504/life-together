@@ -44,7 +44,7 @@ function EditChores({ chore }) {
         try {
             const body = { name, description, deadline };
             console.log(body);
-            const response = await fetch(`http://localhost:3001/api/cleaning-chores/${chore.id}`, {
+            const response = await fetch(`http://localhost:3001/api/chores/${chore.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,4 +1,6 @@
 // let forceDatabaseRefresh;
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 import express from 'express';
 import dotenv from 'dotenv';
@@ -18,7 +20,7 @@ app.use('/api/auth', authRoutes)
 
 // 'force: true' to reset database after each sync (using only for dev phase)
 // Will have to POST seed data before GET user data
-sequelize.sync({ force: true })
+sequelize.sync({ force: true})
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server listening on port ${PORT}`);

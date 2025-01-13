@@ -1,11 +1,10 @@
 import { DataTypes, Model } from "sequelize";
+import bcrypt from 'bcrypt';
 
 export class User extends Model {
     id;
-    first_name;
-    last_name;
     email;
-    password
+    password;
 };
 
 export function UserFactory(sequelize) {
@@ -16,14 +15,14 @@ export function UserFactory(sequelize) {
                 autoIncrement: true,
                 primaryKey: true
             },
-            first_name: {
-                type: DataTypes.STRING(50),
-                allowNull: false
-            },
-            last_name: {
-                type: DataTypes.STRING(50),
-                allowNull: false
-            },
+            // first_name: {
+            //     type: DataTypes.STRING(50),
+            //     allowNull: false
+            // },
+            // last_name: {
+            //     type: DataTypes.STRING(50),
+            //     allowNull: false
+            // },
             email: {
                 type: DataTypes.STRING(100),
                 allowNull: false,
@@ -34,22 +33,42 @@ export function UserFactory(sequelize) {
             },
             password: {
                 type: DataTypes.STRING(255),
-                allowNull: false
-            }
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: 'Please enter a password'
+                    }
+                }
+            },
         },
         {
             sequelize,
-            tableName: 'users'
+            tableName: 'users',
+            timestamps: false,
+            hooks: {
+                beforeCreate: async (user) => {
+                    await user.setPassword(user.password);
+                },
+                beforeUpdate: async (user) => {
+                        await user.setPassword(user.password);
+                    }
+                }
+                // beforeCreate: async (newUserData) => {
+                //     await newUserData.setEmailToLowerCase();
+                // },
+                // beforeUpdate: async (updatedUserData) => {
+                //     await updatedUserData.setEmailToLowerCase();
+                // },
+                // beforeCreate: async (newUserData) => {
+                //     await newUserData.setPassword(newUserData.password);
+                // },
+                // beforeUpdate: async (updatedUserData) => {
+                //     if (updatedUserData.password) {
+                //         await updatedUserData.setPassword(updatedUserData.password);
+                //     }
+                // }
         }
     );
-
-    // User.addHook('beforeCreate', async (user) => {
-    //     if (user.password) {
-    //         const bcrypt = require('bcrypt');
-    //         const salt = await bcrypt.genSalt(10);
-    //         user.password = await bcrypt.hash(user.password, salt);
-    //     }
-    // });
 
     return User;
 };
