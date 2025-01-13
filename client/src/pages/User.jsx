@@ -8,12 +8,28 @@ import '../index.css';
 function User() {
 
   return (
-    <div>
-      <Navbar darkMode={'Dark Mode'} logOut={'Log Out'}/>
-      <Welcome/>
-      <Chores/>
-      <AddChore/>
-    </div>
+          
+        <div className="container my-4">
+          <div className="row">
+            {/* Feature A */}
+            <div className="col-12 mb-5">
+               <Navbar darkMode={'Dark Mode'} logOut={'Log Out'}/>
+            </div>
+
+            {/* Feature B */}
+            <div className="col-12 mx-auto">
+              <Welcome />
+            </div>
+            {/* Feature C */}
+            <div className="col-12 mt-5">
+              <Chores />
+            </div>
+              <div className="col-12 mt-5">
+              <AddChore/>
+            </div>
+          </div>
+        </div>
+    
   );
 };
 
