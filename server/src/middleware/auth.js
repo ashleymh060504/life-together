@@ -4,16 +4,19 @@ export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-    const secretKey = process.env.JWT_SECRET_KEY || '';
+    if (!token) {
+      return res.sendStatus(401);
+    }
+    const secretKey = process.env.JWT_SECRET || '';
 
     jwt.verify(token, secretKey, (err, user) => {
       if (err) {
         return res.sendStatus(403);
       }
       req.user = user; 
-      return next();
+      next();
     });
   } else {
-    res.sendStatus(401);
+    res.sendStatus(401).json({ error: 'Unauthorized: No token provided' });
   }
 };
