@@ -1,5 +1,4 @@
-import React from 'react';
-import './Welcome.css';
+// import auth from '../../utils/auth.js';
 
 function Welcome() {
     return(

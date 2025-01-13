@@ -1,41 +1,27 @@
 import "./loginRegister.css";
-import React, { useState } from 'react';
-import Auth from "../../utils/auth";
-import { login } from "../../api/authAPI.jsx";
+// import React, { useState } from 'react';
+// import Auth from "../../utils/auth";
+// import { login } from "../../api/authAPI.jsx";
 
-  
-function LoginRegister() {
-  const [loginData, setLoginData] = useState({ email: '', password: ''});
-  const [registrationData, setRegistrationData] = useState({ 
-    firstName: '', 
-    lastName: '', 
-    email: '', 
-    password: ''
-  });
-  const [loginError, setLoginError] = useState('');
-  const [registrationError, setRegistrationError] = useState('');
-  
-  const handleLoginChange = (e) => {   
-    const { name, value } = e.target;
-    setLoginData({
-      ...loginData,
-      [name]: value,
-    });
-  };
+const UserLogin = () => {
+//   const [loginData, setLoginData] = useState({
+//     email: '',
+//     password: ''
+//   });
 
-  const handleRegistrationChange = (e) => {
-    const { name, value } = e.target;
-    setRegistrationData({
-      ...registrationData,
-      [name]: value,
-    });
-  };
+//   const handleChange = (e) => {   
+//     const { name, value } = e.target;
+//     setLoginData({
+//       ...loginData,
+//       [name]: value,
+//     });
+//   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await login(loginData);
-      Auth.login(data.token);
+      // const data = await login(loginData);
+      // Auth.login(data.token);
     } catch (err) {
       setLoginError('Login failed. Please check your credentials and try again.');
       console.error('Failed to login', err);
@@ -80,7 +66,8 @@ function LoginRegister() {
                   className="form-control "
                   id="floatingInputLogin"
                   placeholder="name@example.com"
-                  onChange={handleLoginChange}
+                  // value={loginData.email || ''}
+                  // onChange={handleChange}
                 />
                 <label htmlFor="floatingInputLogin">Email address</label>
               </div>
@@ -92,7 +79,8 @@ function LoginRegister() {
                   className="form-control"
                   id="floatingPasswordLogin"
                   placeholder="Password"
-                  onChange={handleLoginChange}
+                  // value={loginData.password || ''}
+                  // onChange={handleChange}
                 />
                 <label htmlFor="floatingPasswordLogin">Password</label>
               </div>
@@ -165,4 +153,4 @@ function LoginRegister() {
       </div>
   )};
 
-export default LoginRegister;
+export default UserLogin;
