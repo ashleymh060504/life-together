@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './chores.css';
 
 function AddChore() {
@@ -19,23 +19,17 @@ function AddChore() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [deadline, setDeadline] = useState(formattedDeadline);
+    const [defaultChores, setDefaultChores] = useState([]);
 
     // Adding a Chore
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            // const token = localStorage.getItem('id_token');
-            // if (!token) {
-            //     console.error('No token found. Please log in');
-            //     return;
-            // }
-
             const body = { name, description, deadline };
             const response = await fetch('http://localhost:3001/api/chores/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                    // Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(body)
             });
@@ -66,6 +60,40 @@ function AddChore() {
         setDeadline(e.target.value);
     }
 
+    // Default Chores
+
+    const handleChoreSelect = (e) => {
+        const selectedIndex = e.target.value;
+        if (selectedIndex !== 'default') {
+            const selectedChore = defaultChores[selectedIndex];
+            setName(selectedChore.name);
+            setDescription(selectedChore.description || '');
+            setDeadline(formattedDeadline);
+        } else {
+            setName('');
+            setDescription('');
+            setDeadline(formattedDeadline);
+        }
+    };
+
+
+    const getDefaultChores = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/api/cleaning-chores');
+
+            const data = await response.json();
+            setDefaultChores(data);
+        } 
+        catch (err) {
+            console.error('Error fetching chores:', err.message);
+            setError('An error occured while fetching chores.');
+        }
+    };
+
+    useEffect(() => {
+        getDefaultChores();
+    }, []);
+
     return(
         <>
             <div className="container text-left mt-5">
@@ -86,7 +114,13 @@ function AddChore() {
                                     <div className="modal-body">
                                         {/* Form */}
                                         <form id='addChoreForm' className='d-flex flex-wrap needs-validation' onSubmit={onSubmitForm}>
-                                            <input type="text" className='form-control' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
+                                            <select class="form-select" aria-label="Default select example" onChange={handleChoreSelect}>
+                                                <option selected>Need some choices?</option>
+                                                {defaultChores.map((chore, index) => (
+                                                    <option value={index}>{chore.name}</option>
+                                                ))}
+                                            </select>
+                                            <input type="text" className='form-control mt-3' value={name} onChange={handleNameChange} placeholder='Chore Name' required/>
                                             <textarea id='addDeadlineValue' className='form-control mt-3' value={description} onChange={handleDescriptionChange} placeholder='Chore Description'></textarea>
                                             <label className='form-control mt-3' for="addDeadlineValue">
                                                 Chore Deadline

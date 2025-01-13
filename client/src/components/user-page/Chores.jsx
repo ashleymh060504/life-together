@@ -13,29 +13,7 @@ function Chores() {
 
     const getChores = async () => {
         try {
-            // const token = localStorage.getItem('id_token');
-            // if (!token) {
-            //     setError('No token found. Please log in');
-            //     return;
-            // }
-
-            // const response = await fetch('http://localhost:3001/api/chores', {
-            //     headers: {
-            //         Authorization: `Bearer ${token}`
-            //     }
-            // });
-
             const response = await fetch('http://localhost:3001/api/chores');
-
-            // if (!response.ok) {
-            //     if (response.status === 401) {
-            //         setError('Unauthorized. Please log in again.');
-            //     }
-            //     else if (response.status === 403) {
-            //         setError('Forbidden. Invalid token.');
-            //     }
-            //     return;
-            // }
 
             const data = await response.json();
             setChores(data.filter((chore) => !chore.isComplete));
@@ -48,12 +26,6 @@ function Chores() {
 
     const getCompletedChores = async () => {
         try {
-            // const token = localStorage.getItem('id_token');
-            // if (!token) {
-            //     setError('No token found. Please log in');
-            //     return;
-            // }
-
             const response = await fetch('http://localhost:3001/api/chores/completed');
             const data = await response.json();
             setCompletedChores(data);

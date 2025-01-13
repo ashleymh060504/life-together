@@ -1,8 +1,14 @@
 import Welcome from '../components/login-page/Welcome.jsx';
 import UserLogin from '../components/login-page/LoginRegister.jsx';
 import ContactUs from '../components/login-page/ContactUs.jsx';
+import { Navigate } from 'react-router-dom';
 
 function Login () {
+
+  const isAuthenticated = !!localStorage.getItem('user');
+  if(isAuthenticated) {
+    return <Navigate to='/user'/>
+  }
 
     return (
       <>
@@ -15,7 +21,7 @@ function Login () {
 
             {/* Feature B */}
             <div className="col-12 mx-auto">
-              <LoginRegister />
+              <UserLogin />
             </div>
             {/* Feature C */}
             <div className="col-12 mt-5">
