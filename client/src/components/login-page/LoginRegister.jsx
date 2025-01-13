@@ -158,7 +158,7 @@ function LoginRegister() {
                 <label htmlFor="floatingPasswordRegister">Password</label>
               </div>
               {registrationError && <p className="text-danger">{registrationError}</p>}
-              <button type="submit" className="card-btn card-btn-bg">Sign up</button>
+              <button type="submit" className="card-btn">Sign Up</button>
             </form>
           </div>
         </div>
