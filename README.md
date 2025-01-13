@@ -23,7 +23,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 ## Installation
 
 1. In the Terminal of Visual Studio Code, enter "npm install" in order to install all of the dependencies.
-2. Run PostgreSQL, by entering "psql -U <username>", enter your password when prompted. 
+2. Run PostgreSQL, by entering "psql -U" and then your username. Enter your password when prompted. 
 3. Once PostgreSQL has started, enter "\i schema.sql" in order to create the database for the project. Then "\q" to exit.  
 
 ## Usage
