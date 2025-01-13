@@ -5,7 +5,7 @@ function ContactUs() {
     <>
          <button
           type="button"
-          class="btn contact-btn ccontactUs-btn contacttest "
+          class="btn contact-btn"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
