@@ -1,0 +1,56 @@
+/* Title container*/
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.landingpage-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.landingpage-subtitle {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-family: Arial, sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    .landingpage-title {
+        font-size: 2rem;
+    }
+
+    .landingpage-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+.landingpage-title:hover {
+    color: #0066cc;
+    transition: color 0.3s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.titles {
+    animation: fadeIn 1s ease-in-out;
+}
