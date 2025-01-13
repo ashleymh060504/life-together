@@ -1,5 +1,10 @@
 function Header(props) {
 
+  const logout = () => {
+    localStorage.removeItem('user');
+    window.location = '/';
+  }
+
     return(
         <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -13,10 +18,10 @@ function Header(props) {
                   </button>
                 </li>
               </ul>
-                <button type="button" className="btn btn-primary">
-                  <a className="nav-link" href='/'> 
+                <button type="button" className="btn btn-primary" onClick={logout}>
+                  {/* <a className="nav-link" href='/'>  */}
                     <span className="navbar-text">{props.logOut}</span>
-                  </a>
+                  {/* </a> */}
                 </button>
             </div>
           </div>

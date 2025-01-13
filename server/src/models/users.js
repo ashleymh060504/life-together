@@ -1,11 +1,7 @@
 import { DataTypes, Model } from "sequelize";
-import bcrypt from 'bcrypt';
 
 export class User extends Model {
-    id;
-    email;
-    password;
-};
+}
 
 export function UserFactory(sequelize) {
     User.init(
@@ -15,14 +11,14 @@ export function UserFactory(sequelize) {
                 autoIncrement: true,
                 primaryKey: true
             },
-            // first_name: {
-            //     type: DataTypes.STRING(50),
-            //     allowNull: false
-            // },
-            // last_name: {
-            //     type: DataTypes.STRING(50),
-            //     allowNull: false
-            // },
+            first_name: {
+                type: DataTypes.STRING(50),
+                allowNull: false
+            },
+            last_name: {
+                type: DataTypes.STRING(50),
+                allowNull: false
+            },
             email: {
                 type: DataTypes.STRING(100),
                 allowNull: false,
@@ -45,28 +41,6 @@ export function UserFactory(sequelize) {
             sequelize,
             tableName: 'users',
             timestamps: false,
-            hooks: {
-                beforeCreate: async (user) => {
-                    await user.setPassword(user.password);
-                },
-                beforeUpdate: async (user) => {
-                        await user.setPassword(user.password);
-                    }
-                }
-                // beforeCreate: async (newUserData) => {
-                //     await newUserData.setEmailToLowerCase();
-                // },
-                // beforeUpdate: async (updatedUserData) => {
-                //     await updatedUserData.setEmailToLowerCase();
-                // },
-                // beforeCreate: async (newUserData) => {
-                //     await newUserData.setPassword(newUserData.password);
-                // },
-                // beforeUpdate: async (updatedUserData) => {
-                //     if (updatedUserData.password) {
-                //         await updatedUserData.setPassword(updatedUserData.password);
-                //     }
-                // }
         }
     );
 

@@ -5,6 +5,8 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+import PrivateRoute from './components/PrivateRoute.jsx';
+
 import App from "./App.jsx";
 import User from "./pages/User.jsx";
 import Login from "./pages/Login.jsx";
@@ -20,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/user",
-        element: <User />,
+        element: (
+          <PrivateRoute>
+            <User />,
+          </PrivateRoute>
+        )
       },
     ],
   },
