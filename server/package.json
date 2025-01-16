@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js --ignore client",
+    "start": "node src/server.js",
     "develop": "nodemon src/server.js --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
